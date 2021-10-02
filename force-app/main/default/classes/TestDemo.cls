@@ -11,10 +11,9 @@ public with sharing class TestDemo {
     public TestDemo() {
 
     }
-
-    public Integer add(Integer a,Integer b)
+    public Integer sub(Integer a,Integer b)
     {
-        return a + b;
+        return a - b;
 
     }
 }
