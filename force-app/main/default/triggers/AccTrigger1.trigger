@@ -1,4 +1,4 @@
-trigger AccTrigger1 on SOBJECT (before insert) 
+trigger AccTrigger1 on Account (before insert) 
 {
     
 }
