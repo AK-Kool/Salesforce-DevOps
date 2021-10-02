@@ -17,4 +17,9 @@ public with sharing class TestDemo {
         return a + b;
 
     }
+    public Integer sub(Integer a,Integer b)
+    {
+        return a - b;
+
+    }
 }
