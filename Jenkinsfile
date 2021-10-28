@@ -28,15 +28,7 @@ node {
     // JWT key credentials.
     // -------------------------------------------------------------------------
     
-    withEnv(["HOME=${env.WORKSPACE}"]) {
-        
-        withCredentials([file(credentialsId: '7d1749fb-6d30-4f0c-9945-62fa99dba44f', variable: 'server_key_file')]) {
-
-            // -------------------------------------------------------------------------
-            // Authorize the Dev Hub org with JWT key and give it an alias.
-            // -------------------------------------------------------------------------
-
-            pipeline {
+    pipeline {
                 agent any
                 environment {
                     // Removed other variables for clarity...
@@ -53,6 +45,16 @@ node {
                     }
                 }
             }
+    
+    
+    withEnv(["HOME=${env.WORKSPACE}"]) {
+        
+        withCredentials([file(credentialsId: '7d1749fb-6d30-4f0c-9945-62fa99dba44f', variable: 'server_key_file')]) {
+
+            // -------------------------------------------------------------------------
+            // Authorize the Dev Hub org with JWT key and give it an alias.
+            // -------------------------------------------------------------------------
+
 
 
 
