@@ -6,7 +6,7 @@ node {
 
     def SF_CONSUMER_KEY="3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8"
     def SF_USERNAME="davidvilla@sfdc.com"
-    def SERVER_KEY_CREDENTALS_ID="7d1749fb-6d30-4f0c-9945-62fa99dba44f"
+    def SERVER_KEY_CREDENTALS_ID=7d1749fb-6d30-4f0c-9945-62fa99dba44f
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL ="https://login.salesforce.com"
 
