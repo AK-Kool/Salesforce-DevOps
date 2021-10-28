@@ -36,11 +36,29 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Authorize DevHub') {
-                rc = command "${toolbelt}/sfdx auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg"
+                rc = command "sfdx force:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8 --jwtkeyfile 7d1749fb-6d30-4f0c-9945-62fa99dba44f --username davidvilla@sfdc.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername --setalias HubOrg"
                 if (rc != 0) {
                     error 'Salesforce dev hub org authorization failed.'
                 }
             }
+            
+//             pipeline {
+//                 agent any
+//                 environment {
+//                     // Removed other variables for clarity...
+//                     SFDX_USE_GENERIC_UNIX_KEYCHAIN = true
+//                     // ...
+//                 }
+//                 stages {    
+//                     stage('TEST') {
+//                         steps {
+//                             withCredentials([file(credentialsId: 'jenkins-cert', variable: 'VAR_CERT_FILE')]) {
+//                                 sh returnStdout: true, script: "sfdx force:auth:jwt:grant --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile  --setdefaultdevhubusername --instanceurl ${HUB_HOST}"
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
 
 
             // -------------------------------------------------------------------------
