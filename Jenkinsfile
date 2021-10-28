@@ -29,7 +29,7 @@ node {
     
     withEnv(["HOME=${env.WORKSPACE}"]) {
         
-        withCredentials([file(credentialsId: SERVER_KEY_CREDENTALS_ID, variable: 'server_key_file')]) {
+        withCredentials([file(credentialsId: 7d1749fb-6d30-4f0c-9945-62fa99dba44f, variable: 'server_key_file')]) {
 
             // -------------------------------------------------------------------------
             // Authorize the Dev Hub org with JWT key and give it an alias.
