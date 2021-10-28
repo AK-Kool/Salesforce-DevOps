@@ -9,6 +9,7 @@ node {
     def SERVER_KEY_CREDENTALS_ID='7d1749fb-6d30-4f0c-9945-62fa99dba44f'
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL ="https://login.salesforce.com"
+    def SFDX_HOME="~/sfdx/bin"
 
     def toolbelt = tool 'toolbelt'
 
@@ -36,7 +37,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Authorize DevHub') {
-                sh returnStdout: true, script: "sfdx force:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8 --jwtkeyfile "7d1749fb-6d30-4f0c-9945-62fa99dba44f" --username davidvilla@sfdc.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername --setalias HubOrg"
+                sh returnStdout: true, script: "${SFDX_HOME}/sfdx force:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8 --jwtkeyfile "7d1749fb-6d30-4f0c-9945-62fa99dba44f" --username davidvilla@sfdc.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername --setalias HubOrg"
                 
             }
             
