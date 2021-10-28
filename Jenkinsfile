@@ -14,7 +14,7 @@ pipeline {
                     stage('TEST') {
                         steps {
                             withCredentials([file(credentialsId: 'jenkins-cert', variable: 'VAR_CERT_FILE')]) {
-                                sh returnStdout: true, script: "~/sfdx/bin/sfdx orce:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8 --jwtkeyfile "7d1749fb-6d30-4f0c-9945-62fa99dba44f" --username "davidvilla@sfdc.com" --instanceurl https://login.salesforce.com --setdefaultdevhubusername"
+                                sh returnStdout: true, script: "~/sfdx/bin/sfdx orce:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8 --jwtkeyfile "7d1749fb-6d30-4f0c-9945-62fa99dba44f" --username 'davidvilla@sfdc.com' --instanceurl https://login.salesforce.com --setdefaultdevhubusername"
                             }
                         }
                     }
