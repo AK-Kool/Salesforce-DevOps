@@ -36,7 +36,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Authorize DevHub') {
-                rc = command "sfdx force:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8 --jwtkeyfile ~/Downloads/Secure\ Sockets\ Layer/server.key --username davidvilla@sfdc.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername --setalias HubOrg"
+                rc = command "sfdx force:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8 --jwtkeyfile "7d1749fb-6d30-4f0c-9945-62fa99dba44f" --username davidvilla@sfdc.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername --setalias HubOrg"
                 if (rc != 0) {
                     error 'Salesforce dev hub org authorization failed.'
                 }
