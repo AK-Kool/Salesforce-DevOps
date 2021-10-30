@@ -10,13 +10,15 @@ node {
     def SFDC_HOST = "https://login.salesforce.com"
     def JWT_KEY_CRED_ID = "7d1749fb-6d30-4f0c-9945-62fa99dba44f"
     def CONNECTED_APP_CONSUMER_KEY="3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8"
-
+    def toolbelt = tool 'toolbelt'
+	
     println 'KEY IS' 
+    println toolbelt	
     println JWT_KEY_CRED_ID
     println HUB_ORG
     println SFDC_HOST
     println CONNECTED_APP_CONSUMER_KEY
-    def toolbelt = tool 'toolbelt'
+    
 
     stage('checkout source') {
         // when running in multi-branch job, one must issue this command
