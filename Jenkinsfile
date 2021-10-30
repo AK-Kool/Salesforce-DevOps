@@ -2,36 +2,13 @@
 
 import groovy.json.JsonSlurperClassic
 
-
-pipeline {
-                agent any
-                environment {
-                    // Removed other variables for clarity...
-                    SFDX_USE_GENERIC_UNIX_KEYCHAIN = true
-                    // ...
-                }
-                stages {    
-                    stage('TEST') {
-                        steps {
-                            withCredentials([file(credentialsId: 'jenkins-cert', variable: 'VAR_CERT_FILE')]) {
-                                sh returnStdout: true, script: "~/sfdx/bin/sfdx orce:auth:jwt:grant --clientid 3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8 --jwtkeyfile "7d1749fb-6d30-4f0c-9945-62fa99dba44f" --username 'davidvilla@sfdc.com' --instanceurl https://login.salesforce.com --setdefaultdevhubusername"
-                            }
-                        }
-                    }
-                }
-            }
-
-
-
-
 node {
 
     def SF_CONSUMER_KEY="3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8"
     def SF_USERNAME="davidvilla@sfdc.com"
-    def SERVER_KEY_CREDENTALS_ID='7d1749fb-6d30-4f0c-9945-62fa99dba44f'
+    def SERVER_KEY_CREDENTALS_ID="7d1749fb-6d30-4f0c-9945-62fa99dba44f"0000000000000000
     def TEST_LEVEL='RunLocalTests'
-    def SF_INSTANCE_URL ="https://login.salesforce.com"
-    def SFDX_HOME="~/sfdx/bin"
+    def SF_INSTANCE_URL = "https://login.salesforce.com"
 
     def toolbelt = tool 'toolbelt'
 
@@ -50,18 +27,20 @@ node {
     // JWT key credentials.
     // -------------------------------------------------------------------------
     
-    
-    
-    
     withEnv(["HOME=${env.WORKSPACE}"]) {
         
-        withCredentials([file(credentialsId: '7d1749fb-6d30-4f0c-9945-62fa99dba44f', variable: 'server_key_file')]) {
+        withCredentials([file(credentialsId: SERVER_KEY_CREDENTALS_ID, variable: 'server_key_file')]) {
 
             // -------------------------------------------------------------------------
             // Authorize the Dev Hub org with JWT key and give it an alias.
             // -------------------------------------------------------------------------
 
-
+            stage('Authorize DevHub') {
+                rc = command "${toolbelt}/sfdx auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultdevhubusername --setalias HubOrg"
+                if (rc != 0) {
+                    error 'Salesforce dev hub org authorization failed.'
+                }
+            }
 
 
             // -------------------------------------------------------------------------
