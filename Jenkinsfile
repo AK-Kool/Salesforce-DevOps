@@ -1,11 +1,6 @@
-node 
-{
+
     
-    def toolbelt = tool 'toolbelt'
-    def JWT_KEY_CRED_ID = '7d1749fb-6d30-4f0c-9945-62fa99dba44f'
-    def HUB_CLIENT_ID = '3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8'
-    def HUB_USERNAME = 'davidvilla@sfdc.com'
-    def HUB_HOST = 'https://login.salesforce.com'
+    
 
     pipeline 
     {
@@ -13,6 +8,11 @@ node
         environment {
             // Removed other variables for clarity...
             SFDX_USE_GENERIC_UNIX_KEYCHAIN = true
+            def toolbelt = tool 'toolbelt'
+            def JWT_KEY_CRED_ID = '7d1749fb-6d30-4f0c-9945-62fa99dba44f'
+            def HUB_CLIENT_ID = '3MVG9fe4g9fhX0E7pjhub2D2EGJrfiStvD8NIFYxGr3tzXpCHoMV_aojlzCgAs4VBSqumxVYTkTmIb2mQy6d8'
+            def HUB_USERNAME = 'davidvilla@sfdc.com'
+            def HUB_HOST = 'https://login.salesforce.com'
             // ...
         }
         stages {    
@@ -25,4 +25,4 @@ node
             }
         }
     }
-}    
+  
